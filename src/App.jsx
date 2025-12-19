@@ -266,6 +266,9 @@ export default function App() {
       ) : (
         <svg>/* sound icon */</svg>
       )}
+      <span className="audio-label">
+    {isMuted ? 'play music' : 'pause'}
+    </span>
     </button>
       <div 
         className="bg-img" 
