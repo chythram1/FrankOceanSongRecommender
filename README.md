@@ -1,6 +1,6 @@
-# Frank Ocean Song Finder 🌊
+# Frank Ocean Song Recommender 🌊
 
-A dreamy, ML-powered song recommender that uses **TextBlob sentiment analysis** to match your emotions to the perfect Frank Ocean track.
+A dreamy, ML-powered song recommender that uses **TextBlob sentiment analysis** to match your emotions to the perfect Frank Ocean track. As a huge Frank Ocean fan, what other better way is there to practice machine learning! :)
 
 ![Frank Ocean Song Finder](./preview.png)
 
