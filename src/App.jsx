@@ -209,7 +209,20 @@ export default function App() {
   const [stage, setStage] = useState('input');
   const [result, setResult] = useState(null);
   const [imgReady, setImgReady] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);  
+  const audioRef = React.useRef(null);           
 
+  const toggleAudio = useCallback(() => {
+    if (audioRef.current) {
+      if (isMuted) {
+        audioRef.current.play();
+        audioRef.current.muted = false;
+      } else {
+        audioRef.current.muted = true;
+      }
+      setIsMuted(!isMuted);
+    }
+  }, [isMuted]);
   const handleSubmit = useCallback(async () => {
     if (!emotion.trim()) return;
     setStage('generating');
@@ -234,10 +247,26 @@ export default function App() {
     if (result) return getAuraColors(result.moodScore);
     return ['#667eea', '#f093fb'];
   }, [result]);
+  
 
   return (
     <div className="app">
       {/* Background - static blur, no transition */}
+    <audio
+      ref={audioRef}
+      src="/Seigfried.m4a"
+      loop
+      muted
+      autoPlay
+    />
+    
+    <button onClick={toggleAudio} className="audio-toggle">
+      {isMuted ? (
+        <svg>/* muted icon */</svg>
+      ) : (
+        <svg>/* sound icon */</svg>
+      )}
+    </button>
       <div 
         className="bg-img" 
         style={{ opacity: imgReady ? 1 : 0 }}
@@ -695,6 +724,25 @@ export default function App() {
           0%, 100% { opacity: 0.4; }
           50% { opacity: 1; }
         }
+          /* Audio Toggle Button */
+.audio-toggle {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  z-index: 100;
+}
+
+.audio-toggle:hover {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
       `}</style>
     </div>
   );
