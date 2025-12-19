@@ -140,10 +140,3 @@ vercel
 
 Each song has a manually-assigned valence score based on musical and lyrical analysis.
 
-## 📄 License
-
-MIT - Feel free to use and modify!
-
----
-
-*Built with 🧡 for Frank Ocean fans*

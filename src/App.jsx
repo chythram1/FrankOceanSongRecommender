@@ -6,24 +6,24 @@ const CHANNEL_ORANGE_COVER = "https://upload.wikimedia.org/wikipedia/en/2/28/Cha
 const NOSTALGIA_COVER = "https://upload.wikimedia.org/wikipedia/en/e/e7/Nostalgia_ultra_cover.jpg";
 
 const FRANK_LIBRARY = [
-  { title: "Nikes", id: "3wb2wm3GAZf8hLIFm5s0mZ", album: "Blonde", valence: 0.15, cover: BLONDE_COVER },
+  { title: "Nikes", id: "3wb2wm3GAZf8hLIFm5s0mZ", album: "Blonde", valence: 0.20, cover: BLONDE_COVER },
   { title: "Ivy", id: "2ZWlPOoWh0626oTaHrnl2a", album: "Blonde", valence: 0.35, cover: BLONDE_COVER },
   { title: "Pink + White", id: "3xKsf9qdS1CyvXSMEid6g8", album: "Blonde", valence: 0.65, cover: BLONDE_COVER },
   { title: "Solo", id: "19YKaevk2mNQpuyuHJmYpk", album: "Blonde", valence: 0.28, cover: BLONDE_COVER },
-  { title: "Self Control", id: "2LMkwUfqC6S6s6qDVlEuzV", album: "Blonde", valence: 0.22, cover: BLONDE_COVER },
+  { title: "Self Control", id: "2LMkwUfqC6S6s6qDVlEuzV", album: "Blonde", valence: 0.10, cover: BLONDE_COVER },
   { title: "Nights", id: "7eqoqGkKe8EK7BDw8Kpv6P", album: "Blonde", valence: 0.45, cover: BLONDE_COVER },
   { title: "White Ferrari", id: "2LMkwUfqC6S6s6qDVlEuzV", album: "Blonde", valence: 0.18, cover: BLONDE_COVER },
-  { title: "Seigfried", id: "6Nle9hKrkL1wQpwNfEkxjh", album: "Blonde", valence: 0.12, cover: BLONDE_COVER },
+  { title: "Seigfried", id: "6Nle9hKrkL1wQpwNfEkxjh", album: "Blonde", valence: 0.15, cover: BLONDE_COVER },
   { title: "Godspeed", id: "7DFLUkBRMlKHvY2FvnLmS2", album: "Blonde", valence: 0.32, cover: BLONDE_COVER },
   { title: "Thinkin Bout You", id: "7DfFc7a6Rwfi3YQMRbDMau", album: "Channel Orange", valence: 0.48, cover: CHANNEL_ORANGE_COVER },
   { title: "Sweet Life", id: "0Iv9E0h2ObYSoTJEhzVl30", album: "Channel Orange", valence: 0.72, cover: CHANNEL_ORANGE_COVER },
-  { title: "Super Rich Kids", id: "6IHxDGwmOIcpuQO60FY3DA", album: "Channel Orange", valence: 0.55, cover: CHANNEL_ORANGE_COVER },
+  { title: "Super Rich Kids", id: "6IHxDGwmOIcpuQO60FY3DA", album: "Channel Orange", valence: 0.65, cover: CHANNEL_ORANGE_COVER },
   { title: "Pyramids", id: "4ANwUJCHeOlJBEGSsHmF4U", album: "Channel Orange", valence: 0.58, cover: CHANNEL_ORANGE_COVER },
-  { title: "Bad Religion", id: "3sFHHFk9reUMgBaFJVaaXU", album: "Channel Orange", valence: 0.08, cover: CHANNEL_ORANGE_COVER },
+  { title: "Bad Religion", id: "3sFHHFk9reUMgBaFJVaaXU", album: "Channel Orange", valence: 0.10, cover: CHANNEL_ORANGE_COVER },
   { title: "Forrest Gump", id: "5BMvN8dq9VLU2HUgRwGJxB", album: "Channel Orange", valence: 0.75, cover: CHANNEL_ORANGE_COVER },
   { title: "Lost", id: "5gcCHnCWQqFiPjMjUlFQaw", album: "Channel Orange", valence: 0.68, cover: CHANNEL_ORANGE_COVER },
   { title: "Novacane", id: "2qm3EQFmuLbz8IkXN8mI4p", album: "Nostalgia, Ultra", valence: 0.62, cover: NOSTALGIA_COVER },
-  { title: "Swim Good", id: "3aOq5jZFLiGhnKLrPTyLqv", album: "Nostalgia, Ultra", valence: 0.35, cover: NOSTALGIA_COVER },
+  { title: "Swim Good", id: "3aOq5jZFLiGhnKLrPTyLqv", album: "Nostalgia, Ultra", valence: 0.67, cover: NOSTALGIA_COVER },
 ];
 
 // API URL - change this to your deployed backend URL
@@ -264,13 +264,13 @@ export default function App() {
         <header className={stage !== 'input' ? 'faded' : ''}>
           <p className="subtitle">FRANK OCEAN</p>
           <div className="header-line" />
-          <h1>Song Finder</h1>
+          <h1>Song Recommender</h1>
         </header>
         
         <main>
           {stage === 'input' && (
             <div className="input-section">
-              <label>How are you currently feeling?</label>
+              <label>How are you feeling right now?</label>
               <input
                 type="text"
                 value={emotion}
@@ -284,7 +284,7 @@ export default function App() {
                 className={emotion.trim() ? 'active' : ''}
                 disabled={!emotion.trim()}
               >
-                Find My Song
+                Find My Frank Ocean Song
               </button>
             </div>
           )}
