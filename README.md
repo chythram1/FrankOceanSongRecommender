@@ -1,7 +1,8 @@
 # Frank Ocean Song Recommender 🌊
 
 A dreamy, ML-powered song recommender that uses **TextBlob sentiment analysis** to match your emotions to the perfect Frank Ocean track. As a huge Frank Ocean fan, what other better way is there to practice machine learning! :)
-Lessons Learned:
+
+## Lessons Learned:
 Sentiment analysis works by detecting the meaning and emotional weight of words. However, in music, lyrics alone are not always an indicator of how a song makes us feel.
 For example, "Self Control" by Frank Ocean has lyrics like:
 "poolside convos about your summer last night"
