@@ -4,26 +4,43 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 const BLONDE_COVER = "https://upload.wikimedia.org/wikipedia/en/a/a0/Blonde_-_Frank_Ocean.jpeg";
 const CHANNEL_ORANGE_COVER = "https://upload.wikimedia.org/wikipedia/en/2/28/Channel_ORANGE.jpg";
 const NOSTALGIA_COVER = "https://upload.wikimedia.org/wikipedia/en/e/e7/Nostalgia_ultra_cover.jpg";
-
+// please note that these valence scores are manually assigned as spotify removed the ability to access valence scores through their developer api
 const FRANK_LIBRARY = [
-  { title: "Nikes", id: "19YKaevk2bce4odJkP5L22", album: "Blonde", valence: 0.20, cover: BLONDE_COVER },
-  { title: "Ivy", id: "2ZWlPOoWh0626oTaHrnl2a", album: "Blonde", valence: 0.35, cover: BLONDE_COVER },
-  { title: "Pink + White", id: "3xKsf9qdS1CyvXSMEid6g8", album: "Blonde", valence: 0.65, cover: BLONDE_COVER },
-  { title: "Solo", id: "35xSkNIXi504fcEwz9USRB", album: "Blonde", valence: 0.28, cover: BLONDE_COVER },
-  { title: "Self Control", id: "5GUYJTQap5F3RDQiCOJhrS", album: "Blonde", valence: 0.10, cover: BLONDE_COVER },
-  { title: "Nights", id: "7eqoqGkKe8EK7BDw8Kpv6P", album: "Blonde", valence: 0.45, cover: BLONDE_COVER },
-  { title: "White Ferrari", id: "2LMkwUfqC6S6s6qDVlEuzV", album: "Blonde", valence: 0.18, cover: BLONDE_COVER },
-  { title: "Seigfried", id: "6Nle9hKrkL1wQpwNfEkxjh", album: "Blonde", valence: 0.15, cover: BLONDE_COVER },
+  { title: "Nikes", id: "19YKaevk2bce4odJkP5L22", album: "Blonde", valence: 0.32, cover: BLONDE_COVER },
+  { title: "Ivy", id: "2ZWlPOoWh0626oTaHrnl2a", album: "Blonde", valence: 0.47, cover: BLONDE_COVER }, // REAL Spotify data
+  { title: "Pink + White", id: "3xKsf9qdS1CyvXSMEid6g8", album: "Blonde", valence: 0.99, cover: BLONDE_COVER },
+  { title: "Solo", id: "35xSkNIXi504fcEwz9USRB", album: "Blonde", valence: 0.35, cover: BLONDE_COVER },
+  { title: "Skyline To", id: "4xR3MAscflQ262kMeiKshQ", album: "Blonde", valence: 0.40, cover: BLONDE_COVER },
+  { title: "Self Control", id: "5GUYJTQap5F3RDQiCOJhrS", album: "Blonde", valence: 0.45, cover: BLONDE_COVER }, // REAL Spotify data
+  { title: "Nights", id: "7eqoqGkKwgOaWNNHx90uEZ", album: "Blonde", valence: 0.43, cover: BLONDE_COVER }, // REAL Spotify data
+  { title: "Solo (Reprise)", id: "2qtoRFCOEL1gRn5q9DJC7F", album: "Blonde", valence: 0.30, cover: BLONDE_COVER },
+  { title: "Pretty Sweet", id: "17yrCsl1Ai6CZLBmGj6d6p", album: "Blonde", valence: 0.38, cover: BLONDE_COVER },
+  { title: "White Ferrari", id: "2LMkwUfqC6S6s6qDVlEuzV", album: "Blonde", valence: 0.26, cover: BLONDE_COVER },
+  { title: "Seigfried", id: "1BViPjTT585XAhkUUrkts0", album: "Blonde", valence: 0.21, cover: BLONDE_COVER },
   { title: "Godspeed", id: "34xTFwjPQ1dC6uJmleno7x", album: "Blonde", valence: 0.32, cover: BLONDE_COVER },
+  { title: "Futura Free", id: "5k8LB57xOq8UUNVaKWSqrf", album: "Blonde", valence: 0.60, cover: BLONDE_COVER },
+  // Channel Orange (2012)
   { title: "Thinkin Bout You", id: "7DfFc7a6Rwfi3YQMRbDMau", album: "Channel Orange", valence: 0.48, cover: CHANNEL_ORANGE_COVER },
   { title: "Sweet Life", id: "6MEDfjHxnVNcYmHe3mM6L2", album: "Channel Orange", valence: 0.72, cover: CHANNEL_ORANGE_COVER },
-  { title: "Super Rich Kids", id: "6IHxDGwmOIcpuQO60FY3DA", album: "Channel Orange", valence: 0.65, cover: CHANNEL_ORANGE_COVER },
+  { title: "Super Rich Kids", id: "0725YWm6Z0TpZ6wrNk64Eb", album: "Channel Orange", valence: 0.70, cover: CHANNEL_ORANGE_COVER },
+  { title: "Pilot Jones", id: "2ohegz9maxzroKBu9YhcCM", album: "Channel Orange", valence: 0.38, cover: CHANNEL_ORANGE_COVER },
+  { title: "Crack Rock", id: "5lcyIeEfwZTs8Ajw3kdF7P", album: "Channel Orange", valence: 0.20, cover: CHANNEL_ORANGE_COVER },
   { title: "Pyramids", id: "4QhWbupniDd44EDtnh2bFJ", album: "Channel Orange", valence: 0.58, cover: CHANNEL_ORANGE_COVER },
-  { title: "Bad Religion", id: "2pMPWE7PJH1PizfgGRMnR9", album: "Channel Orange", valence: 0.10, cover: CHANNEL_ORANGE_COVER },
-  { title: "Forrest Gump", id: "4YZbVct8l9MnAVIROnLQdx", album: "Channel Orange", valence: 0.75, cover: CHANNEL_ORANGE_COVER },
   { title: "Lost", id: "3GZD6HmiNUhxXYf8Gch723", album: "Channel Orange", valence: 0.68, cover: CHANNEL_ORANGE_COVER },
-  { title: "Novacane", id: "4osgfFTICMkcGbbigdsa53", album: "Nostalgia, Ultra", valence: 0.62, cover: NOSTALGIA_COVER },
-  { title: "Swim Good", id: "3CgZCQyuyxHRMWB9BTwmni", album: "Nostalgia, Ultra", valence: 0.67, cover: NOSTALGIA_COVER },
+  { title: "Monks", id: "0msrDPXxZpts4FRnoX0bFr", album: "Channel Orange", valence: 0.45, cover: CHANNEL_ORANGE_COVER },
+  { title: "Bad Religion", id: "2pMPWE7PJH1PizfgGRMnR9", album: "Channel Orange", valence: 0.18, cover: CHANNEL_ORANGE_COVER },
+  { title: "Pink Matter", id: "1fOkmYW3ZFkkjIdOZSf596", album: "Channel Orange", valence: 0.42, cover: CHANNEL_ORANGE_COVER },
+  { title: "Forrest Gump", id: "4YZbVct8l9MnAVIROnLQdx", album: "Channel Orange", valence: 0.75, cover: CHANNEL_ORANGE_COVER },
+  // Nostalgia, Ultra (2011)
+  { title: "Novacane", id: "2qm3EQFmuLbz8IkXN8mI4p", album: "Nostalgia, Ultra", valence: 0.62, cover: NOSTALGIA_COVER },
+  { title: "Swim Good", id: "6A5M6tKEYqNIoB4fOkwHMV", album: "Nostalgia, Ultra", valence: 0.70, cover: NOSTALGIA_COVER },
+  // Singles
+  { title: "Chanel", id: "6Nv3ATD0EVKA0GoTZFscB4", album: "Single", valence: 0.47, cover: "https://i.scdn.co/image/ab67616d0000b273a0b780c23fc3c19bd412b234" },
+  { title: "Moon River", id: "3CTWvaV1LYdVEW8hXvnxRl", album: "Single", valence: 0.25, cover: "https://i.scdn.co/image/ab67616d0000b2736566b46cd24c5f2d0561ee7a" },
+  { title: "In My Room", id: "3WCXVzgj4JFTK1OIJULG5g", album: "Single", valence: 0.30, cover: "https://i.scdn.co/image/ab67616d0000b273db974f9533dd9b362891b5db" },
+  { title: "Cayendo", id: "0sf8Ac6mZ2B1HJIcJiqvbE", album: "Single", valence: 0.22, cover: "https://i.scdn.co/image/ab67616d0000b27335d8be841e9f7f777fbca446" },
+  { title: "Dear April", id: "4oPdbFcBhJVyNsgJaAJnip", album: "Single", valence: 0.10, cover: "https://i.scdn.co/image/ab67616d0000b27367136d7919a1dc6a51ce3daf" },
+  { title: "Biking", id: "5S4cCeafLRGrx8TqCVMZkR", album: "Single", valence: 0.48, cover: "https://i.scdn.co/image/ab67616d0000b27369a8328489e5e485514a8667" },
 ];
 
 // API URL - change this to your deployed backend URL
