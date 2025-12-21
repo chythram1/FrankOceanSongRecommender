@@ -1,16 +1,18 @@
 # Frank Ocean Song Recommender 🌊
 
 A dreamy, ML-powered song recommender that uses **TextBlob sentiment analysis** to match your emotions to the perfect Frank Ocean track. As a huge Frank Ocean fan, what other better way is there to practice machine learning! :)
+NOTE: In 2024, Spotify stopped new applications from pulling metrics like "valence" scores and other audio features, but I was able to find some scores online through old datasets. Therefore, the rest of the valence scores assigned to the songs are estimated and assigned based on my interpretation.
 
 ## Lessons Learned:
 Sentiment analysis works by detecting the meaning and emotional weight of words. However, in music, lyrics alone are not always an indicator of how a song makes us feel.
 For example, "Self Control" by Frank Ocean has lyrics like:
 "poolside convos about your summer last night"
 "our time was right"
-At first glance, the model assigned this a more positive score (closer to 1.0) because the words seem pleasant and nostalgic. However, I would say that it is one of his saddest tracks due to the melancholy from the music itself, the way Frank sings it, and the emotional context behind the words.
-With that being said, some of the results from this recommender aren't ones I necessarily agree with, but that's part of what made this project interesting! A truly accurate music-mood matcher would need audio analysis (like Spotify's actual valence scores) combined with lyrical sentiment, which is what makes recommendation systems so complex! Overall, I learned a lot and hope to continue to improve it!
+At first glance, I found that spotify had assigned this song a valence score of 0.43, which is almost in the middle of happy and sad because the words seem pleasant and nostalgic. However, I would say that it is one of his saddest tracks due to the melancholy from the music itself, the way Frank sings it, and the emotional context behind the words.
+With that being said, some of the valence scores I found online aren't ones I necessarily agree with, but that's part of what made this project interesting! Overall, I learned a lot and hope to continue to improve it!
 ## TODO
-- Validate all the results
+- Validate the functionality of the local simulated sentiment analysis
+- Add to it by running sentiment analysis on the lyrics of all his music and then using the calculated sentiment to assign scores to practice more with ML
 ## ✨ Features
 
 - **ML Sentiment Analysis** - Uses TextBlob's Naive Bayes classifier to analyze emotions
